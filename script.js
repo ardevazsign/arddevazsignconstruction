@@ -87,3 +87,30 @@ var swiper = new Swiper(".logo-slider", {
         },
     },  
 });
+
+// send email from clients
+
+function emailSend(){
+    var userName = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+
+    var messageBody = "Name: " + userName +
+    "<br/> Phone Number: " + phone +
+    "<br/> Email Address: " + email +
+    "<br/> Message: " + message;
+
+    Email.send({
+        Host : "smtp.elasticemail.com",
+        Username : "newojunior@gmail.com",
+        Password : "F8CCA9B7A3528E7D09C05672D2B92328AC24",
+        To : 'newojunior@gmail.com',
+        From : "newojunior@gmail.com",
+        Subject : "This is the subject",
+        Body : messageBody
+    }).then(
+        message => alert(message)
+    );
+}

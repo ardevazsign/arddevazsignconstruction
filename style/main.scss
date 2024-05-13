@@ -704,10 +704,15 @@ section{
         padding: 3rem 5% ;
     }
 }
+@media (max-width:1053px) {
+    html {
+            font-size: 52%;
+        }
+}
 
 @media (max-width: 991px){
     html {
-        font-size: 55%;
+        font-size: 50%;
     }
     section{
         padding: 3rem 2rem ;
@@ -739,6 +744,9 @@ section{
 }
 
 @media (max-width:768px){
+    html {
+        font-size: 45%;
+    }
     .header-holder{
 
         .search-form{
