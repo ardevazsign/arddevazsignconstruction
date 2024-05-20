@@ -811,7 +811,7 @@ section{
             width: 90%;
         }
         .login-form{
-            width: 50%;
+            width: 60%;
         }
 
     }
@@ -831,6 +831,19 @@ section{
 @media (max-width: 450px) {
     html {
         font-size: 40%;
+    }
+    .header-holder {
+    
+        .search-form {
+            width: 90%;
+        }
+        .login-form {
+            width: 90%;
+        }
+        .sign-up-form{
+            width: 90%;
+        }
+    
     }
 }
 // End here

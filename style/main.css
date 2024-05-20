@@ -758,7 +758,7 @@ section {
     width: 90%;
   }
   .header-holder .login-form {
-    width: 50%;
+    width: 60%;
   }
   .home .slide {
     justify-content: center;
@@ -773,5 +773,14 @@ section {
 @media (max-width: 450px) {
   html {
     font-size: 40%;
+  }
+  .header-holder .search-form {
+    width: 90%;
+  }
+  .header-holder .login-form {
+    width: 90%;
+  }
+  .header-holder .sign-up-form {
+    width: 90%;
   }
 }/*# sourceMappingURL=main.css.map */
