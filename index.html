@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
@@ -33,29 +33,50 @@
                 <div id="search-btn" class="fas fa-search"></div>
                 <div id="login-btn" class="fas fa-user"></div>   
             </div>
-
+<!-- search form start here  -->
             <form action="" class="search-form">
                 <input type="search" name="" placeholder="search here..." id="search-box">
                 <label for="search-box" class="fas fa-search"></label>
             </form>
+<!-- search form end here -->
 
+<!-- login-form start here-->
             <form action="" class="login-form">
                 <h3>login form</h3>
-                <input type="email" placeholder="enter your email" class="box">
-                <input type="password" placeholder="enter your password" class="box">
+                <input type="username" name="username" id="username-login" placeholder="enter username" class="box">
+                <input type="email" name="email" id="email-login" placeholder="enter email" class="box">
+                <input type="password" name="password" id="password-login" placeholder="enter password" class="box">
+
                 <div class="flex">
                     <input type="checkbox" name="" id="remember-me">
                     <label for="remember-me">remember me</label>
-                    <a href="#">forgot password</a>
-                    
+                    <a href="#">forgot password</a>   
                 </div>
-                <input type="submit" value="login now" class="btn">
-                <p>don't have an account <a href="#">create one!</a></p>
+                <input type="submit" name="login" id="login" value="login" class="btn">
+                <p>don't have an account <a href="#" id="sign-up" class="sign-up">create one!</a></p>
             </form>
+<!-- login end here -->
+
+    <!---  sign-up form start here   -->
+    <form action="" class="sign-up-form">
+      
+        <h3>sign up</h3>
+
+        <input type="text" name="username" id="username-register" placeholder="create username..." class="box">
+        <input type="email" name="email" id="email-register" placeholder="email" class="box">
+        <input type="password" name="password" id="password-register" placeholder="password" class="box">
+
+        <input type="submit" id="signup" value="sign up" class="btn">
+        <p>Registered already <a href="#" id="back-login"> back to login</a>
+    </form>
+
+    <!-- sign-up end here -->
+
+
 
         </header>
 
-        <!-- -------------------------- Contact ---------------------------------- -->
+        <!-- -------------------------- Contact info start here ---------------------------------- -->
 
         <div class="contact-info">
             
@@ -84,14 +105,14 @@
             </div>
 
             <div class="share">
-                <a href="#" class="fab fa-facebook-f"></a>
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-instagram"></a>
-                <a href="#" class="fab fa-linkedin"></a>
+                <a href="https://www.facebook.com" class="fab fa-facebook-f"></a>
+                <a href="https://www.twitter.com" class="fab fa-twitter"></a>
+                <a href="https://www.instagram.com" class="fab fa-instagram"></a>
+                <a href="https://www.linkedin.com" class="fab fa-linkedin"></a>
             </div>
         </div>
 
-        <!-- End Here ---------------------------->
+        <!-- contact info End Here ---------------------------->
 
         <main>
             <section class="home" id="home">
@@ -515,7 +536,7 @@
 
             </div>
           </section>
-+
+
             <!-- contact section end here -->
             <!-- blogs section start here -->
 
@@ -546,7 +567,7 @@
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Provident, laborum?</p>
                         <a href="#" class="btn">read more</a>
                        </div>
-                    </div>
+                        </div>
 
                     <div class="swiper-slide slide">
                         <div class="image">
@@ -637,7 +658,122 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+    <!-- <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js"></script> -->
+
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyDkM9C1s-ZJ2BYKCV8i5JIvh4ZflBLTcsI",
+          authDomain: "signup-login-ardevazsign.firebaseapp.com",
+          databaseURL: "https://signup-login-ardevazsign-default-rtdb.firebaseio.com",
+          projectId: "signup-login-ardevazsign",
+          storageBucket: "signup-login-ardevazsign.appspot.com",
+          messagingSenderId: "8687883145",
+          appId: "1:8687883145:web:81f768ec7d6a97b93f4758"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const auth = getAuth();
+
+        signup.addEventListener('click',(e) => {
+
+            var email = document.getElementById('email-register').value;
+            var password = document.getElementById('password-register').value;
+            var username = document.getElementById('username-register').value;
+       
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                //   Signed In
+                const user = userCredential.user;
+               
+                
+                  set(ref(database, 'users/' + user.uid),{
+                    username: username,
+                    email: email
+                  })
+
+                  alert('You created an account successfully!');
+
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+
+                    alert(errorMessage);
+
+                });
+        });
+        
+        login.addEventListener('click',(e) => {
+            var email = document.getElementById('email-login').value;
+            var password = document.getElementById('password-login').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+             .then((userCredential) => {
+
+                const user = userCredential.user;
+                
+                   const dt = new Date();
+                   update(ref(database, 'users/' + user.uid),{
+                   last_login: dt,
+                })
+                alert('You are currently logged in!');
+             })
+             .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                alert(errorMessage);
+             });
+
+        });
+        
+        const user = auth.currentUser;
+
+        onAuthStateChanged(auth, (user) =>{
+            if(user){
+
+
+                const uid = user.uid;
+
+            } else {
+
+            }
+        });
+
+        logout.addEventListener('click',(e) =>{
+        
+            signOut(auth).then(() => {
+               alert('Logged out already!');
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+
+                alert(errorMessage);
+            });
+        });
+
+      </script>
+    
+
   <script src="./script.js"></script> 
+  
   <script>
     lightGallery(document.querySelector('.projects .box-container'));
   </script> 

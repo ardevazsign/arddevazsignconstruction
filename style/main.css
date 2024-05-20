@@ -223,6 +223,57 @@ section {
 }
 .header-holder .login-form p a:hover {
   text-decoration: underline;
+  cursor: pointer;
+}
+.header-holder .sign-up-form {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40rem;
+  height: 43rem;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  text-align: center;
+  animation: fadeIn 0.2s linear;
+  display: none;
+}
+.header-holder .sign-up-form.active {
+  display: block;
+}
+.header-holder .sign-up-form h3 {
+  font-size: 3rem;
+  color: var(--black);
+  text-transform: capitalize;
+  padding-bottom: 1rem;
+  text-transform: uppercase;
+}
+.header-holder .sign-up-form .box {
+  width: 100%;
+  padding: 1.2rem 1.4rem;
+  background: var(--light-bg);
+  font-size: 1.6rem;
+  color: var(--light-color);
+  margin: 0.7rem 0;
+}
+.header-holder .sign-up-form .btn {
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.header-holder .sign-up-form p {
+  font-size: 1.5rem;
+  color: var(--light-color);
+  line-height: 2;
+  padding-top: 1rem;
+}
+.header-holder .sign-up-form p a {
+  color: var(--primary-color);
+}
+.header-holder .sign-up-form p a:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .contact-info {
@@ -700,11 +751,14 @@ section {
   }
 }
 @media (max-width: 768px) {
+  html {
+    font-size: 50%;
+  }
   .header-holder .search-form {
     width: 90%;
   }
   .header-holder .login-form {
-    width: 90%;
+    width: 50%;
   }
   .home .slide {
     justify-content: center;

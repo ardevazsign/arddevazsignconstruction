@@ -188,7 +188,9 @@ section{
         display: none;
 
         &.active{
-            display: block;
+            display:block;
+
+           
         }
        
 
@@ -240,11 +242,72 @@ section{
 
                &:hover{
                 text-decoration: underline;
+                cursor: pointer;
                }
             }
         }
+       
     }
+    .sign-up-form{
+        position:absolute;
+        top:120%; left:50%;
+        transform: translateX(-50%);
+        width: 40rem;
+        height: 43rem;
+        background: var(--white);
+        box-shadow: var(--box-shadow);
+        padding: 2rem;
+        text-align: center;
+        animation: fadeIn .2s linear;
+        display: none;
+        
+        
+        
+
+
+        &.active{
+            display: block;
+        }
+        h3{
+            @include titleText(3rem);
+            padding-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .box{
+            width: 100%;
+            padding: 1.2rem 1.4rem;
+            background: var(--light-bg);
+            font-size: 1.6rem;
+            color: var(--light-color);
+            margin: .7rem 0;  
+        }
+        .btn{
+            margin-top: 5rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        p{
+            @include graphText(1.5rem);
+            padding-top: 1rem;
+
+            a{
+               color: var(--primary-color); 
+
+               &:hover{
+                text-decoration: underline;
+                cursor: pointer;
+               }
+            }
+        }
+        
+
+    }
+    
+
+   
+   
 }
+
 
 //  --- contact -----
 
@@ -704,15 +767,10 @@ section{
         padding: 3rem 5% ;
     }
 }
-@media (max-width:1053px) {
-    html {
-            font-size: 52%;
-        }
-}
 
 @media (max-width: 991px){
     html {
-        font-size: 50%;
+        font-size: 55%;
     }
     section{
         padding: 3rem 2rem ;
@@ -745,7 +803,7 @@ section{
 
 @media (max-width:768px){
     html {
-        font-size: 45%;
+        font-size: 50%;
     }
     .header-holder{
 
@@ -753,7 +811,7 @@ section{
             width: 90%;
         }
         .login-form{
-            width: 90%;
+            width: 50%;
         }
 
     }
